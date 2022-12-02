@@ -1,3 +1,6 @@
+# Part1: 00:03:10
+# Part2: 00:05:59
+
 import numpy as np
 import itertools as it
 import utils as u

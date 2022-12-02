@@ -2,10 +2,15 @@ import importlib
 import sys
 import os
 
-def run_day(day, ex = False):
-    importlib.import_module(f"days.{day}.{day}").start(
+def run_day(day, ex = False, imp = False):
+    i = "_improved" if imp else ""
+    folder = f"days/{day}{i}"
+    if not os.path.exists(folder):
+        print("Noot good day")
+        return
+    importlib.import_module(f"days.{day}{i}.{day}").start(
         open(
-            f"days/{day}/{day}.in" if not ex else f"days/{day}/{day}.ex"
+            f"{folder}/{day}.in" if not ex else f"{folder}/{day}.ex"
         ).read())
 
 if len(sys.argv) == 1:
@@ -18,8 +23,5 @@ except:
     print("Noot good number")
     exit(0)
 
-if not os.path.exists(f"days/{day}"):
-    print("Noot good day")
-    exit(0)
 
-run_day(day, len(sys.argv) > 2 and sys.argv[2] == 'ex')
+run_day(day, len(sys.argv) > 2 and 'ex' in sys.argv[2:], len(sys.argv) > 2 and 'improved' in sys.argv[2:])
