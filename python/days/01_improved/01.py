@@ -5,6 +5,6 @@ import numpy as np
 import itertools as it
 import utils as u
 
-def start(inp):
+def start(inp, lin):
     elfs = np.sort(u.pad_jagged([f.strip().split('\n') for f in inp.split('\n\n')]).astype(int).sum(axis=1))
     print(elfs[-1], elfs[-3:].sum())

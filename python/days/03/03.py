@@ -12,7 +12,7 @@ def prio(lett):
     else:
         return p -65+27
 
-def start(inp):
+def start(inp, lin):
     lines = inp.split('\n')
     sum = 0
     for cmd in lines:
@@ -23,7 +23,7 @@ def start(inp):
             if(lett in h1 and lett not in done):
                 done.append(lett)
                 sum += prio(lett)
-                
+
     sum2 = 0
     for i in range(0, int(len(lines)/3)):
         cmd = lines[i*3:i*3+3]

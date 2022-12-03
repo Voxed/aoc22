@@ -11,7 +11,10 @@ def run_day(day, ex = False, imp = False):
     importlib.import_module(f"days.{day}{i}.{day}").start(
         open(
             f"{folder}/{day}.in" if not ex else f"{folder}/{day}.ex"
-        ).read())
+        ).read(),
+        [l.strip() for l in open(
+            f"{folder}/{day}.in" if not ex else f"{folder}/{day}.ex"
+        ).readlines()])
 
 if len(sys.argv) == 1:
     print("Noot enough arguments")

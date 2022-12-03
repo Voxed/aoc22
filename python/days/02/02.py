@@ -6,7 +6,7 @@ import numpy as np
 import itertools as it
 import utils as u
 
-def start(inp):
+def start(inp, lin):
     cmds = [f.split(' ') for f in inp.split('\n')]
 
     scoresum1 = 0
