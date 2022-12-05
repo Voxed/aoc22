@@ -12,7 +12,7 @@ def run_day(day, ex = False, imp = False):
         open(
             f"{folder}/{day}.in" if not ex else f"{folder}/{day}.ex"
         ).read(),
-        [l.strip() for l in open(
+        [l.replace('\n', '') for l in open(
             f"{folder}/{day}.in" if not ex else f"{folder}/{day}.ex"
         ).readlines()])
 
