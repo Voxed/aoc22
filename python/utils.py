@@ -70,8 +70,9 @@ def parse_nums(l, delim = ' '):
             pass
     return nums
 
-def super_map(funcs, inp):
-    l = inp
-    for f in funcs:
+# Multimap, maps all functions given on the last argument
+def mmap(*args):
+    l = args[-1]
+    for f in args[0:-1]:
         l = map(f, l)
-    return list(l)
+    return np.array(list(l))
