@@ -69,3 +69,9 @@ def parse_nums(l, delim = ' '):
         except:
             pass
     return nums
+
+def super_map(funcs, inp):
+    l = inp
+    for f in funcs:
+        l = map(f, l)
+    return list(l)
