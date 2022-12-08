@@ -40,6 +40,6 @@ def start(inp, lines):
                     vis -= 1
                     break
             if vis > 0:
-                scenery.append(d1*d2*d3*d4)
                 sum += 1
+            scenery.append(d1*d2*d3*d4)
     print(sum, max(scenery))
