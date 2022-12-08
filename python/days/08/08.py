@@ -42,4 +42,4 @@ def start(inp, lines):
             if vis > 0:
                 scenery.append(d1*d2*d3*d4)
                 sum += 1
-    print(max(scenery))
+    print(sum, max(scenery))
