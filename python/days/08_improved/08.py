@@ -2,10 +2,11 @@
 # Part1: 00:08:55
 # Part2: 00:16:42
 import numpy as np
+import utils as u
 
 def raycast(m, zx, y, d):
     for l in range(1, max(m.shape)+1):
-        if not ((p := np.add(zx, np.multiply(d, l)))[0] in range(0, m.shape[0]) and p[1] in range(0, m.shape[1])):
+        if not u.out_of_bounds(p := np.add(zx, np.multiply(d, l)), m.shape):
             return [l-1, 0]
         if m[p[0], p[1]] >= y:
             return [l, 1]

@@ -76,3 +76,9 @@ def mmap(*args):
     for f in args[0:-1]:
         l = map(f, l)
     return np.array(list(l))
+
+def out_of_bounds(x, y):
+    for i, v in enumerate(x):
+        if not v in range(0, y[i]):
+            return False
+    return True
