@@ -5,7 +5,7 @@ import numpy as np
 import utils as u
 
 def start(inp, lines):
-    DEBUG = True # Print map in each state or nah?
+    DEBUG = False # Print map in each state or nah?
 
     head = [0,0]
     tail = [0,0]
@@ -73,21 +73,22 @@ def start(inp, lines):
             if(list(ropes[9]) not in poses1):
                 poses1.append(list(ropes[9]))
 
-            print('')
-            for i in range(0, 5):
-                for j in range(0, 6):
-                    done = False
-                    if ropes[0] == [j,4-i]:
-                        done = True
-                        print("H", end='')
-                    if not done:
-                        for r in range(1, len(ropes)):
-                            if ropes[r] == [j,4-i]:
-                                print(str(r), end='')
-                                done = True
-                                break
-                    if not done:
-                        print(".", end='')
+            if DEBUG:
                 print('')
+                for i in range(0, 5):
+                    for j in range(0, 6):
+                        done = False
+                        if ropes[0] == [j,4-i]:
+                            done = True
+                            print("H", end='')
+                        if not done:
+                            for r in range(1, len(ropes)):
+                                if ropes[r] == [j,4-i]:
+                                    print(str(r), end='')
+                                    done = True
+                                    break
+                        if not done:
+                            print(".", end='')
+                    print('')
 
     print(len(poses0), len(poses1))
