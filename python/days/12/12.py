@@ -1,9 +1,5 @@
 # Didn't wake up at 6:00 so got no time to brag with :(
-
-import numpy as np
-import utils as u
 from scipy.sparse import csr_matrix
-
 from scipy.sparse.csgraph import dijkstra
 
 
@@ -21,10 +17,10 @@ def start(inp, lines):
             node_index = ri*len(grid[0]) + ci
             if v == -14:
                 start = node_index
-                grid[ri][ci] = ord('a')-97
+                grid[ri][ci] = 0
             if v == -28:
                 end = node_index
-                grid[ri][ci] = ord('z')-97
+                grid[ri][ci] = 25
             if grid[ri][ci] == 0:
                 a_nodes.append(node_index)
 
@@ -40,7 +36,6 @@ def start(inp, lines):
                         graph[node_index][node_index_dest] = 1
 
     graph = csr_matrix(graph)
-    dist_matrix, predecessors = dijkstra(
-        csgraph=graph, indices=a_nodes, directed=True, return_predecessors=True)
+    dist_matrix = dijkstra(csgraph=graph, indices=a_nodes, directed=True)
     dists = [i[end] for i in dist_matrix]
-    print(dist_matrix[a_nodes.index(start)][end], min(dists))
+    print(int(dist_matrix[a_nodes.index(start)][end]), int(min(dists)))
