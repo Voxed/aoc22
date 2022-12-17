@@ -1,8 +1,5 @@
 # God damn
 
-from numpy.lib import stride_tricks as st
-from scipy.sparse.csgraph import dijkstra
-
 ROCK_SHAPES = [
     ["####"],
 
