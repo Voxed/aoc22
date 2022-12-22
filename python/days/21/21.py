@@ -60,7 +60,7 @@ def start(line, lines):
     min_i = -99999999999999999
     max_i =  99999999999999999
     new_direction = False
-    while True: # Expects humn to be on left hand side, because that's what I got
+    while True:
         i = int((min_i + max_i)/2.0) # Seems like it's always integers
         if eval(root_op, {'humn': i}):
             print(i)
