@@ -6,8 +6,8 @@ import sys
 import re
 
 # Pads out a jagged array into an even matrix by inserting zeros
-def pad_jagged(array):
-    return np.array(list(it.zip_longest(*array, fillvalue=0))).T
+def pad_jagged(array, fv: str | int = 0):
+    return np.array(list(it.zip_longest(*array, fillvalue=fv))).T
 
 # Returns true if array1 is a subset of array2
 def subset_of(array1, array2):
@@ -32,7 +32,7 @@ def irange(a, b = None):
 # Parse columns from file, start on text-column 'start', read in 'elem_size' 
 # characters, move by sep, repeat... Transposes final result so the columns are 
 # rows, so the bottom element constitutes as first element in each row.
-def parse_columns(inp, start, sep, elem_size = 1):
+def parse_columns(inp, start, sep, elem_size = 1, fv: int | str=0):
     rows = []
     for l in inp:
         l = l[start:]
@@ -40,12 +40,12 @@ def parse_columns(inp, start, sep, elem_size = 1):
         while(True):
             cells.append(l[0:elem_size])
             l = l[elem_size:]
-            if(len(l) > sep + elem_size):
+            if(len(l) >= sep + elem_size):
                 l = l[sep:]
             else:
                 break
         rows.append(cells)
-    return np.array(rows).T
+    return np.array(pad_jagged(rows, fv)).T
 
 # Split a list by a delimiter, perfect for splitting up the input file!
 def split_list(list, delim):
