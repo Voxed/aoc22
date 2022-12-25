@@ -82,3 +82,7 @@ def out_of_bounds(x, y):
         if not v in range(0, y[i]):
             return False
     return True
+
+def print_transposed(list):
+    for r in np.array(list).T:
+        print(''.join(r))
